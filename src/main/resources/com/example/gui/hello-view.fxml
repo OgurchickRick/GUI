@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox alignment="TOP_CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.gui.HelloController">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <HBox spacing="20.0">
+        <VBox>
+            <Label text="Сообщение"/>
+            <TextField fx:id="textField" promptText="Введите текст"/>
+        </VBox>
+        <VBox>
+            <Label text="Сдвиг"/>
+            <TextField fx:id="shiftField" promptText="Введите сдвиг" onKeyTyped="#handleKeyTyped"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="20.0">
+        <Button fx:id="encryptButton" text="Зашифровать" onAction="#encryptButtonClick" styleClass="btn, btn-primary"/>
+        <Button fx:id="decipherButton" text="Расшифровать" onAction="#decipherButtonClick" styleClass="btn, btn-primary"/>
+    </HBox>
+    <HBox spacing="20.0">
+        <Label text="Зашифрованное сообщение: "/>
+        <Label fx:id="result"/>
+    </HBox>
+</VBox>
