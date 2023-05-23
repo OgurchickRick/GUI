@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
 <VBox alignment="TOP_CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.gui.HelloController">
 
@@ -10,13 +12,17 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
     <HBox spacing="20.0">
-        <VBox>
+        <VBox minWidth="340">
             <Label text="Сообщение"/>
             <TextField fx:id="textField" promptText="Введите текст"/>
         </VBox>
         <VBox>
-            <Label text="Сдвиг"/>
-            <TextField fx:id="shiftField" promptText="Введите сдвиг" onKeyTyped="#handleKeyTyped"/>
+            <Label text="Сдвиг" />
+            <Spinner fx:id="shiftField">
+                <valueFactory>
+                    <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="32"/>
+                </valueFactory>
+            </Spinner>
         </VBox>
     </HBox>
 
@@ -24,8 +30,8 @@
         <Button fx:id="encryptButton" text="Зашифровать" onAction="#encryptButtonClick" styleClass="btn, btn-primary"/>
         <Button fx:id="decipherButton" text="Расшифровать" onAction="#decipherButtonClick" styleClass="btn, btn-primary"/>
     </HBox>
-    <HBox spacing="20.0">
-        <Label text="Зашифрованное сообщение: "/>
-        <Label fx:id="result"/>
+    <HBox spacing="20.0" styleClass="h4, alert, alert-success">
+        <Label text="Зашифрованное сообщение: " minHeight="30.0" styleClass="lbl, lbl-success"/>
+        <Label fx:id="result" minHeight="30.0" styleClass="lbl, lbl-success"/>
     </HBox>
 </VBox>
