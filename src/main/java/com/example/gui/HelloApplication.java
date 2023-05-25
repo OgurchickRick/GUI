@@ -15,6 +15,8 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 500, 300);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         stage.setTitle("Шифровальщик3000");
+        stage.setMinWidth(485);
+        stage.setMinHeight(250);
         stage.setScene(scene);
         stage.show();
     }

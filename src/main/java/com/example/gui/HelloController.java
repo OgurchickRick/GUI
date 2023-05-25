@@ -1,5 +1,6 @@
 package com.example.gui;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -7,14 +8,17 @@ public class HelloController {
     @FXML
     public Spinner shiftField;
     @FXML
-    private TextField textField;
+    private TextArea textField;
     @FXML
-    private Label result;
+    private TextArea result;
     @FXML
     private Button encryptButton;
     @FXML
     private Button decipherButton;
+    @FXML
+    private Button cleanButton;
 
+    private final int alphabet_size = 32;
 
     public void initialize() {
         encryptButton.disableProperty().bind(
@@ -30,53 +34,47 @@ public class HelloController {
     protected void encryptButtonClick() {
         String text = textField.getText();
         int shift = (int) shiftField.getValue();
-        String res = "";
+        StringBuilder res = new StringBuilder();
         for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
             if (Character.isAlphabetic(ch)) {
                 boolean isLowerCase = Character.isLowerCase(ch);
-                if (isLowerCase) {
-                    ch += shift;
-                    if (ch > 'я') {
-                        ch -= 32;
-                    }
-                } else {
-                    ch += shift;
-                    if (ch > 'Я') {
-                        ch -= 32;
-                    }
+                ch += shift;
+                if (isLowerCase && ch > 'я') {
+                    ch -= alphabet_size;
+                } else if (!isLowerCase && ch > 'Я') {
+                    ch -= alphabet_size;
                 }
             }
-            res += ch;
+            res.append(ch);
         }
-        result.setText(res);
+        result.setText(res.toString());
     }
-
-
 
     @FXML
     protected void decipherButtonClick() {
         String text = textField.getText();
         int shift = (int) shiftField.getValue();
-        String res = "";
+        StringBuilder res = new StringBuilder();
         for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
             if (Character.isAlphabetic(ch)) {
                 boolean isLowerCase = Character.isLowerCase(ch);
-                if (isLowerCase) {
-                    ch -= shift;
-                    if (ch < 'а') {
-                        ch += 32;
-                    }
-                } else {
-                    ch -= shift;
-                    if (ch < 'А') {
-                        ch += 32;
-                    }
+                ch -= shift;
+                if (isLowerCase && ch < 'а') {
+                    ch += alphabet_size;
+                } else if (!isLowerCase && ch < 'А') {
+                    ch += alphabet_size;
                 }
             }
-            res += ch;
+            res.append(ch);
         }
-        result.setText(res);
+        result.setText(res.toString());
+    }
+
+    @FXML
+    protected void cleanButtonClick() {
+        textField.setText("");
+        result.setText("");
     }
 }

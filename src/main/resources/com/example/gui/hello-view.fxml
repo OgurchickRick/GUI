@@ -3,22 +3,21 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Spinner?>
-<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
 <VBox alignment="TOP_CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.gui.HelloController">
+      fx:controller="com.example.gui.HelloController"
+      stylesheets="@styles.css" styleClass="page">
 
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
-    <HBox spacing="20.0">
-        <VBox minWidth="340">
+    <HBox spacing="20.0" styleClass="test">
+        <VBox HBox.hgrow="ALWAYS">
             <Label text="Сообщение"/>
-            <TextField fx:id="textField" promptText="Введите текст"/>
+            <TextArea fx:id="textField" wrapText="true" promptText="Введите текст" styleClass="message"/>
         </VBox>
         <VBox>
             <Label text="Сдвиг" />
-            <Spinner fx:id="shiftField">
+            <Spinner fx:id="shiftField" minWidth="50.0">
                 <valueFactory>
                     <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="32"/>
                 </valueFactory>
@@ -29,9 +28,11 @@
     <HBox spacing="20.0">
         <Button fx:id="encryptButton" text="Зашифровать" onAction="#encryptButtonClick" styleClass="btn, btn-primary"/>
         <Button fx:id="decipherButton" text="Расшифровать" onAction="#decipherButtonClick" styleClass="btn, btn-primary"/>
+        <Button fx:id="cleanButton" text="Очистить" onAction="#cleanButtonClick" styleClass="btn, btn-danger"/>
     </HBox>
     <HBox spacing="20.0" styleClass="h4, alert, alert-success">
-        <Label text="Зашифрованное сообщение: " minHeight="30.0" styleClass="lbl, lbl-success"/>
-        <Label fx:id="result" minHeight="30.0" styleClass="lbl, lbl-success"/>
+        <Label text="Зашифрованное сообщение: " minWidth="140.0" minHeight="30.0" styleClass="lbl, lbl-success"
+               wrapText="true"/>
+        <TextArea fx:id="result" wrapText="true" styleClass="lbl, lbl-success" editable="false"/>
     </HBox>
 </VBox>
