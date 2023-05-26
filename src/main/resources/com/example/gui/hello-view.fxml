@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+
 <VBox alignment="TOP_CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.gui.HelloController"
       stylesheets="@styles.css" styleClass="page">
@@ -12,7 +13,11 @@
     </padding>
     <HBox spacing="20.0" styleClass="test">
         <VBox HBox.hgrow="ALWAYS">
-            <Label text="Сообщение"/>
+            <Label text="Сообщение">
+                <tooltip>
+                    <Tooltip text="Введите сообщение которое хотите зашифровать" />
+                </tooltip>
+            </Label>
             <TextArea fx:id="textField" wrapText="true" promptText="Введите текст" styleClass="message"/>
         </VBox>
         <VBox>

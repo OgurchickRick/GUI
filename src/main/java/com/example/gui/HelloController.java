@@ -1,6 +1,6 @@
 package com.example.gui;
 
-import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -76,5 +76,14 @@ public class HelloController {
     protected void cleanButtonClick() {
         textField.setText("");
         result.setText("");
+        showAlert("Очистка", "Поля очищены");
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
